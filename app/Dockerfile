@@ -32,7 +32,8 @@ RUN apt-get update -y && \
     supervisor \
     python3-dev \
     python3-numpy \
-    python3-pip
+    python3-pip \
+    libpq-dev
 
 # Install geospatial stack from UbuntuGIS
 RUN add-apt-repository -y ppa:ubuntugis/ubuntugis-unstable && \
