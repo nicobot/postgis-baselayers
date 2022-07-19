@@ -2,14 +2,14 @@
     "name": "gadm",
     "metadata": {
         "description": "GADM Global Administrative Regions",
-        "attribution": ["GADM 3.6 (released on 6 May 2018). https://gadm.org/"],
+        "attribution": ["GADM 4.1 (released on 16 July 2022). https://gadm.org/"],
         "url": ""
     },
     "layers": [
         {
             "name": "gadm",
             "metadata": {
-                "description": "GADM v3.6 Global Administrative Divisions"
+                "description": "GADM v4.1 Global Administrative Divisions"
             }
         }
     ]

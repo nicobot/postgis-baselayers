@@ -1,3 +1,14 @@
+Postgis with GADM has an error for importing the lastest GADM version (ATM 4.1).
+
+The only way to import it was manually from the container:
+
+1- docker exec -i -t postgis-baselayers /bin/bash
+2- cd /app/datasets/gadm
+3- make -f gadm.make // This will download GADM 4.1 but it will fail when importing it (because of the PG connection string, next step will make it manually)
+4- ogr2ogr -f PostgreSQL -overwrite PG:"dbname=postgis-database host=postgis-database port=5432 user=postgis password=postgis" -lco SCHEMA=gadm tmp/gadm_410.gpkg
+
+
+
 # PostGIS Baselayers 0.1.1
 
 PostGIS Baselayers is a web application that connects to a PostGIS database and lets you automatically download and import a selection of popular open vector datasets (Natural Earth, GADM, Geonames, etc) into the database. It comes bundled with a Docker environment and a PostGIS database container to get up and running quickly.
