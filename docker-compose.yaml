@@ -15,6 +15,7 @@ services:
     depends_on:
       - postgis-database
     command: /usr/bin/supervisord -c "/etc/supervisor/conf.d/supervisord.conf"
+  
   postgis-database:
     build: db/
     container_name: postgis-database
@@ -26,7 +27,20 @@ services:
     ports:
       - 35432:5432
     command: -c "listen_addresses=*" 
+
+  pgadmin:
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL:-pgadmin4@pgadmin.org}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD:-admin}
+    volumes:
+      - .:/app
+      - pgadmin:/root/.pgadmin
+    ports:
+      - "${PGADMIN_PORT:-5050}:80"
+
 networks:
   default:
 volumes:
   postgis_database_volume:
+  pgadmin:
